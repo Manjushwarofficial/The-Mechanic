@@ -3,7 +3,6 @@
 The Mechanic is a 3D survival adventure game developed in Unity.  
 You play as a stranded mechanic who must repair a broken lighthouse, survive mysterious threats at night, and signal for rescue — all while navigating a remote and eerie island.
 
----
 
 ## Game Overview
 
@@ -13,7 +12,6 @@ You play as a stranded mechanic who must repair a broken lighthouse, survive mys
 - **Radio Communication**: Signal for help using a radio. If successful, a boat or helicopter will come to your rescue.
 - **End Goal**: Repair the lighthouse, stay alive, and escape the island.
 
----
 
 ## Features
 
@@ -23,7 +21,6 @@ You play as a stranded mechanic who must repair a broken lighthouse, survive mys
 - Atmospheric audio and visuals for an immersive experience.
 - Single-player narrative-driven gameplay.
 
----
 
 ## Development Status
 
@@ -35,7 +32,6 @@ The core mechanics are being prototyped, including:
 - Radio-based rescue system  
 - Map-based exploration and interaction
 
----
 
 ## Built With
 
@@ -44,16 +40,14 @@ The core mechanics are being prototyped, including:
 - Blender – 3D Modeling 
 - GIMP / Photoshop – Textures and UI
 
----
 
 ## Repository Structure
 
----
 ## License
 
 This project is licensed under the [Apache License 2.0](https://github.com/Manjushwarofficial/The_Mechanic/blob/c67a033f648f439b399516f4b8ba411f74b60c83/LICENSE).  
 You are free to use, modify, and distribute this software under the terms of the license.
----
+
 
 ## Author
 
