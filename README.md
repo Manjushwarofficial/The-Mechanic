@@ -1,6 +1,6 @@
 # The Mechanic
 
-**The Mechanic** is a 3D survival adventure game developed in Unity.  
+The Mechanic is a 3D survival adventure game developed in Unity.  
 You play as a stranded mechanic who must repair a broken lighthouse, survive mysterious threats at night, and signal for rescue — all while navigating a remote and eerie island.
 
 ---
@@ -47,4 +47,18 @@ The core mechanics are being prototyped, including:
 ---
 
 ## Repository Structure
+
+---
+## License
+
+This project is licensed under the [Apache License 2.0](https://github.com/Manjushwarofficial/The_Mechanic/blob/c67a033f648f439b399516f4b8ba411f74b60c83/LICENSE).  
+You are free to use, modify, and distribute this software under the terms of the license.
+---
+
+## Author
+
+**Manjushwar Khairkar**  
+Developer | Designer | Game Mechanic | Admin
+[GitHub Profile](https://github.com/manjushwarofficial)
+
 
