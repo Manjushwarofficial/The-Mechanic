@@ -3,6 +3,13 @@
 The Mechanic is a 3D survival adventure game developed in Unity.  
 You play as a stranded mechanic who must repair a broken lighthouse, survive mysterious threats at night, and signal for rescue — all while navigating a remote and eerie island.
 
+# Gameplay Screenshots
+
+![tempImageBlyqf0](https://github.com/user-attachments/assets/8c8b059a-4023-4a9a-8f88-8aa547393ac4)
+
+![tempImagezHTFiy](https://github.com/user-attachments/assets/d09d1bcd-7bb5-4330-a4eb-e28bf751fea8)
+
+
 
 ## Game Overview
 
