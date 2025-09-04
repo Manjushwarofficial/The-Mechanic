@@ -66,8 +66,9 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(72, 69, 56, 0.8), rgba(72, 69, 56, 0.6)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23334155" width="1200" height="600"/><polygon fill="%23475569" points="0,600 400,400 800,500 1200,300 1200,600"/><circle fill="%2364748b" cx="300" cy="200" r="50" opacity="0.6"/><circle fill="%2364748b" cx="800" cy="150" r="30" opacity="0.4"/><circle fill="%2364748b" cx="1000" cy="250" r="40" opacity="0.5"/></svg>');
+            /* Placeholder image for the background */
+            background: linear-gradient(135deg, rgba(72, 69, 56, 0.8), rgba(72, 69, 56, 0.7)), 
+                        url('https://private-user-images.githubusercontent.com/173296232/484676175-d09d1bcd-7bb5-4330-a4eb-e28bf751fea8.jpeg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTY5ODI3NzYsIm5iZiI6MTc1Njk4MjQ3NiwicGF0aCI6Ii8xNzMyOTYyMzIvNDg0Njc2MTc1LWQwOWQxYmNkLTdiYjUtNDMzMC1hNGViLWUyOGJmNzUxZmVhOC5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDkwNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA5MDRUMTA0MTE2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZmYzMjM4MTBkYTIyN2I1MWRmY2RiM2JjN2UwZThlOTBiM2NjOWQzM2U0ZDYzZWRmMGMzNGU4NDU1ZjBmMDdjMiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.M_nr-6ZestpPfmF_nE-edL_5-HKMFlKDgKGk7EeKpqk');
             background-size: cover;
             background-position: center;
             min-height: 100vh;
@@ -206,7 +207,22 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+            color: #fff;
         }
+
+        .play-button-overlay {
+            background: rgba(0,0,0,0.5);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .trailer-video:hover .play-button-overlay {
+            background: rgba(0,0,0,0.7);
+        }
+
 
         /* Gallery Section */
         .gallery {
@@ -539,17 +555,17 @@
     
     <section class="trailer" id="trailer">
         <h2>Watch The Trailer</h2>
-        <div class="trailer-video" onclick="playTrailer()">
-            <p style="color: #C0D8E0; margin: 0; text-align: center; font-size: 1.2rem;">▶️ Play Trailer</p>
+        <div class="trailer-video" onclick="playTrailer()" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/trailer-thumb/960/540'); background-size: cover; background-position: center;">
+            <div class="play-button-overlay">▶️ Play Trailer</div>
         </div>
     </section>
     
     <section class="gallery" id="gallery">
         <h2>Gallery</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://via.placeholder.com/400x225/334155/C0D8E0?text=Island+Shore" alt="Island Shore"></div>
-            <div class="gallery-item"><img src="https://via.placeholder.com/400x225/475569/C0D8E0?text=The+Lighthouse" alt="The Lighthouse at dusk"></div>
-            <div class="gallery-item"><img src="https://via.placeholder.com/400x225/64748b/C0D8E0?text=Night+Survival" alt="Hiding from creatures at night"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/game-shore/400/225" alt="Placeholder image of a game shoreline"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/game-tower/400/225" alt="Placeholder image of the lighthouse tower"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/game-night/400/225" alt="Placeholder image of a dark, spooky night scene"></div>
         </div>
     </section>
 
@@ -621,9 +637,9 @@
         // Trailer functionality
         function playTrailer() {
             const placeholder = document.querySelector('.trailer-video');
-            placeholder.innerHTML = '<p style="color: #C0D8E0; margin: 0;">Trailer would load here<br><small>In a real implementation, this would embed a YouTube video.</small></p>';
-            placeholder.style.background = 'linear-gradient(135deg, #2d3748, #4a5568)';
-            placeholder.onclick = null;
+            // This is a placeholder action. In a real site, you would embed a YouTube iframe.
+            placeholder.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>`;
+            placeholder.onclick = null; // Disable further clicks
         }
 
         // Smooth scrolling for navigation links
