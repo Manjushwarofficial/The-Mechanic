@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lighthouse - 3D Survival Adventure Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #C0D8E0;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #484538;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: #C0D8E0;
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #C0D8E0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(192, 216, 224, 0.8);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(72, 69, 56, 0.8), rgba(72, 69, 56, 0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23334155" width="1200" height="600"/><polygon fill="%23475569" points="0,600 400,400 800,500 1200,300 1200,600"/><circle fill="%2364748b" cx="300" cy="200" r="50" opacity="0.6"/><circle fill="%2364748b" cx="800" cy="150" r="30" opacity="0.4"/><circle fill="%2364748b" cx="1000" cy="250" r="40" opacity="0.5"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #C0D8E0;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            animation: glow 2s infinite alternate;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: #C0D8E0;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #C0D8E0;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: #484538;
+            color: #C0D8E0;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            background: #5a5548;
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* Game Overview */
+        .overview {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .overview h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #484538;
+            margin-bottom: 3rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .overview-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .overview-card h3 {
+            color: #484538;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .overview-card p {
+            color: #484538;
+            opacity: 0.9;
+        }
+        
+        /* Trailer Section */
+        .trailer {
+            padding: 5rem 2rem;
+            background: rgba(72, 69, 56, 0.1);
+            text-align: center;
+        }
+
+        .trailer h2 {
+            font-size: 2.5rem;
+            color: #484538;
+            margin-bottom: 3rem;
+        }
+
+        .trailer-video {
+            max-width: 960px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            background: #333;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #484538;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* Development Status */
+        .development {
+            padding: 4rem 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .development h2 {
+            text-align: center;
+            color: #484538;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .dev-content {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 0 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dev-content p {
+            color: #484538;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .dev-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .dev-list li {
+            color: #484538;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(72, 69, 56, 0.1);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .dev-list li:before {
+            content: "•";
+            color: #484538;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Built With */
+        .built-with {
+            background: rgba(72, 69, 56, 0.05);
+            padding: 4rem 0;
+        }
+
+        .built-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .built-with h2 {
+            color: #484538;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .tech-item h4 {
+            color: #484538;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            color: #484538;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Author Section */
+        .author {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .author-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .author h2 {
+            color: #484538;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .author-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .author-name {
+            color: #484538;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .author-roles {
+            color: #484538;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .github-link {
+            color: #484538;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .github-link:hover {
+            color: #666;
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(72, 69, 56, 0.1);
+        }
+
+        .download-section h2 {
+            color: #484538;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-info {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #484538;
+            font-size: 1.1rem;
+        }
+
+        .download-button {
+            background: #484538;
+            color: #C0D8E0;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .download-button:hover {
+            background: #5a5548;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #484538;
+            color: #C0D8E0;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 20px rgba(192, 216, 224, 0.3);
+            }
+            to {
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 30px rgba(192, 216, 224, 0.6);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .overview-grid,
+            .gallery-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">The Lighthouse</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#trailer">Trailer</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#development">Development</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>The Lighthouse</h1>
+            <p class="tagline">3D Survival Adventure Game</p>
+            <p>You play as a stranded mechanic who must repair a broken lighthouse, survive mysterious threats at night, and signal for rescue — all while navigating a remote and eerie island. Developed in Unity with atmospheric survival gameplay.</p>
+            <a href="#download" class="cta-button">Download Game</a>
+        </div>
+    </section>
+
+    <section class="overview" id="overview">
+        <h2>Game Overview</h2>
+        <div class="overview-grid">
+            <div class="overview-card">
+                <h3>Daytime Exploration</h3>
+                <p>Move around the island, collect materials, and work on restoring the lighthouse. Explore the mysterious terrain and gather resources needed for survival and repair.</p>
+            </div>
+            <div class="overview-card">
+                <h3>Nighttime Survival</h3>
+                <p>Hide in shaded areas to avoid being hunted by nocturnal monsters. Use light and shadow strategically to survive the dangerous nights on the island.</p>
+            </div>
+            <div class="overview-card">
+                <h3>Map Navigation</h3>
+                <p>Use a hand-drawn map to explore and mark important locations. Navigate the island efficiently while tracking key points of interest.</p>
+            </div>
+            <div class="overview-card">
+                <h3>Radio Communication</h3>
+                <p>Signal for help using a radio. If successful, a boat or helicopter will come to your rescue. Master the communication system to call for aid.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding: 0 2rem;">
+            <div style="background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); border-radius: 15px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                <h3 style="color: #484538; margin-bottom: 1rem; font-size: 1.5rem;">End Goal</h3>
+                <p style="color: #484538; opacity: 0.9; font-size: 1.1rem;">Repair the lighthouse, stay alive, and escape the island.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="trailer" id="trailer">
+        <h2>Watch The Trailer</h2>
+        <div class="trailer-video" onclick="playTrailer()">
+            <p style="color: #C0D8E0; margin: 0; text-align: center; font-size: 1.2rem;">▶️ Play Trailer</p>
+        </div>
+    </section>
+    
+    <section class="gallery" id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x225/334155/C0D8E0?text=Island+Shore" alt="Island Shore"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x225/475569/C0D8E0?text=The+Lighthouse" alt="The Lighthouse at dusk"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x225/64748b/C0D8E0?text=Night+Survival" alt="Hiding from creatures at night"></div>
+        </div>
+    </section>
+
+    <section class="development" id="development">
+        <h2>Development Status</h2>
+        <div class="dev-content">
+            <p>This project is currently in development. The core mechanics are being prototyped and refined to deliver an engaging survival experience.</p>
+            <h3 style="color: #484538; margin-bottom: 1rem;">Current Development Focus:</h3>
+            <ul class="dev-list">
+                <li>Lighthouse repair system</li>
+                <li>Night-time monster AI</li>
+                <li>Radio-based rescue system</li>
+                <li>Map-based exploration and interaction</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="built-with">
+        <div class="built-container">
+            <h2>Built With</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Unity 3D</h4>
+                    <p>Game Engine</p>
+                </div>
+                <div class="tech-item">
+                    <h4>C#</h4>
+                    <p>Scripting and Logic</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Blender</h4>
+                    <p>3D Modeling</p>
+                </div>
+                <div class="tech-item">
+                    <h4>GIMP / Photoshop</h4>
+                    <p>Textures and UI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="author" id="author">
+        <div class="author-container">
+            <h2>Developer</h2>
+            <div class="author-card">
+                <div class="author-name">Manjushwar Khairkar</div>
+                <div class="author-roles">Developer | Designer | Game Mechanic | Admin</div>
+                <a href="#" class="github-link">GitHub Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section" id="download">
+        <h2>Download The Lighthouse</h2>
+        <div class="download-info">
+            <p>Experience the atmospheric survival adventure of The Lighthouse. Navigate a mysterious island, survive the night, and find your way to rescue in this immersive Unity-built game.</p>
+            <p><strong>License:</strong> Apache License 2.0 | <strong>Platform:</strong> PC Windows | <strong>Status:</strong> In Development</p>
+        </div>
+        <button class="download-button" onclick="startDownload()">
+            Download for PC
+        </button>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Manjushwar Khairkar. Licensed under Apache License 2.0. | The Lighthouse - Survival Adventure Game</p>
+    </footer>
+
+    <script>
+        // Trailer functionality
+        function playTrailer() {
+            const placeholder = document.querySelector('.trailer-video');
+            placeholder.innerHTML = '<p style="color: #C0D8E0; margin: 0;">Trailer would load here<br><small>In a real implementation, this would embed a YouTube video.</small></p>';
+            placeholder.style.background = 'linear-gradient(135deg, #2d3748, #4a5568)';
+            placeholder.onclick = null;
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download functionality
+        function startDownload() {
+            const button = document.querySelector('.download-button');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = 'Preparing Download...';
+            button.style.background = '#666';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = 'Download Started!';
+                button.style.background = '#4CAF50';
+                
+                setTimeout(() => {
+                    alert('Download initiated! The Lighthouse game files are being prepared.\n\nNote: This is a development version. Please check the repository for the latest build and installation instructions.');
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.style.background = '#484538';
+                        button.disabled = false;
+                    }, 3000);
+                }, 1000);
+            }, 2000);
+        }
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(72, 69, 56, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = '#484538';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add animation on scroll for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.overview-card, .gallery-item, .trailer-video').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
