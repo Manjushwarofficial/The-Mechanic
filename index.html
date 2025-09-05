@@ -27,6 +27,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: background 0.3s ease, backdrop-filter 0.3s ease;
         }
 
         .nav-container {
@@ -66,9 +67,13 @@
 
         /* Hero Section */
         .hero {
-            /* Placeholder image for the background */
-            background: linear-gradient(135deg, rgba(72, 69, 56, 0.8), rgba(72, 69, 56, 0.7)), 
-                        url('https://drive.google.com/file/d/1girdMKqk_RqeDyLYY-Qdk4NoE2b8ge7Z/view?usp=share_link');
+            /*
+              IMPORTANT: Replace this placeholder URL with the path to your own image.
+              Best practice: Create an 'images' folder in your project and put your background image there.
+              For example: url('./images/hero-background.jpg')
+            */
+            background: linear-gradient(135deg, rgba(72, 69, 56, 0.8), rgba(72, 69, 56, 0.7)),
+                          url('https://picsum.photos/seed/lighthouse-bg/1920/1080'); /* <-- FIXED: Replaced Google Drive link */
             background-size: cover;
             background-position: center;
             min-height: 100vh;
@@ -588,132 +593,4 @@
             <h2>Built With</h2>
             <div class="tech-grid">
                 <div class="tech-item">
-                    <h4>Unity 3D</h4>
-                    <p>Game Engine</p>
-                </div>
-                <div class="tech-item">
-                    <h4>C#</h4>
-                    <p>Scripting and Logic</p>
-                </div>
-                <div class="tech-item">
-                    <h4>Blender</h4>
-                    <p>3D Modeling</p>
-                </div>
-                <div class="tech-item">
-                    <h4>GIMP / Photoshop</h4>
-                    <p>Textures and UI</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="author" id="author">
-        <div class="author-container">
-            <h2>Developer</h2>
-            <div class="author-card">
-                <div class="author-name">Manjushwar Khairkar</div>
-                <div class="author-roles">Developer | Designer | Game Mechanic | Admin</div>
-                <a href="#" class="github-link">GitHub Profile</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="download-section" id="download">
-        <h2>Download The Lighthouse</h2>
-        <div class="download-info">
-            <p>Experience the atmospheric survival adventure of The Lighthouse. Navigate a mysterious island, survive the night, and find your way to rescue in this immersive Unity-built game.</p>
-            <p><strong>License:</strong> Apache License 2.0 | <strong>Platform:</strong> PC Windows | <strong>Status:</strong> In Development</p>
-        </div>
-        <button class="download-button" onclick="startDownload()">
-            Download for PC
-        </button>
-    </section>
-
-    <footer class="footer">
-        <p>&copy; 2024 Manjushwar Khairkar. Licensed under Apache License 2.0. | The Lighthouse - Survival Adventure Game</p>
-    </footer>
-
-    <script>
-        // Trailer functionality
-        function playTrailer() {
-            const placeholder = document.querySelector('.trailer-video');
-            // This is a placeholder action. In a real site, you would embed a YouTube iframe.
-            placeholder.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>`;
-            placeholder.onclick = null; // Disable further clicks
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Download functionality
-        function startDownload() {
-            const button = document.querySelector('.download-button');
-            const originalText = button.innerHTML;
-            
-            button.innerHTML = 'Preparing Download...';
-            button.style.background = '#666';
-            button.disabled = true;
-            
-            setTimeout(() => {
-                button.innerHTML = 'Download Started!';
-                button.style.background = '#4CAF50';
-                
-                setTimeout(() => {
-                    alert('Download initiated! The Lighthouse game files are being prepared.\n\nNote: This is a development version. Please check the repository for the latest build and installation instructions.');
-                    
-                    setTimeout(() => {
-                        button.innerHTML = originalText;
-                        button.style.background = '#484538';
-                        button.disabled = false;
-                    }, 3000);
-                }, 1000);
-            }, 2000);
-        }
-
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(72, 69, 56, 0.95)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            } else {
-                navbar.style.background = '#484538';
-                navbar.style.backdropFilter = 'none';
-            }
-        });
-
-        // Add animation on scroll for cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.overview-card, .gallery-item, .trailer-video').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(30px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(element);
-        });
-    </script>
-</body>
-</html>
+                    <h4>
