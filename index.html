@@ -9,25 +9,27 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
+        /* FIXED: Updated color palette */
         body {
-            background: #C0D8E0;
+            background: #F0F4EF;
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #0D1821;
         }
 
-        /* Navigation */
+        /* FIXED: Updated color palette */
         .navbar {
-            background: #484538;
+            background: #0D1821;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            transition: background 0.3s ease, backdrop-filter 0.3s ease;
+            transition: background 0.3s ease;
         }
 
         .nav-container {
@@ -39,8 +41,9 @@
             padding: 0 2rem;
         }
 
+        /* FIXED: Updated color palette */
         .logo {
-            color: #C0D8E0;
+            color: #F0F4EF;
             font-size: 2rem;
             font-weight: bold;
             text-decoration: none;
@@ -52,9 +55,10 @@
             list-style: none;
             gap: 2rem;
         }
-
+        
+        /* FIXED: Updated color palette */
         .nav-links a {
-            color: #C0D8E0;
+            color: #F0F4EF;
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 500;
@@ -62,14 +66,21 @@
 
         .nav-links a:hover {
             color: #fff;
-            text-shadow: 0 0 8px rgba(192, 216, 224, 0.8);
+            text-shadow: 0 0 8px rgba(240, 244, 239, 0.8);
         }
 
-        /* Hero Section */
         .hero {
-    /* The ./ means 'start in the current directory' */
-    background-image: url('./assets/tempImagezHTFiy.jpeg');
-}
+            background: url('assets/featured-image.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
 
         .hero-content {
             max-width: 900px;
@@ -78,35 +89,40 @@
             animation: fadeInUp 1s ease;
         }
 
+        /* FIXED: Updated text color for readability against a bright image */
         .hero h1 {
             font-size: 4rem;
-            color: #C0D8E0;
+            color: #F0F4EF;
             margin-bottom: 1rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-            animation: glow 2s infinite alternate;
+            text-shadow: 2px 2px 8px rgba(13, 24, 33, 0.7); /* Darker shadow for light bg */
         }
-
+        
+        /* FIXED: Updated text color for readability */
         .hero .tagline {
             font-size: 1.5rem;
-            color: #C0D8E0;
+            color: #F0F4EF;
             margin-bottom: 1rem;
             opacity: 0.9;
             font-weight: bold;
+            text-shadow: 1px 1px 4px rgba(13, 24, 33, 0.7);
         }
-
+        
+        /* FIXED: Updated text color for readability */
         .hero p {
             font-size: 1.2rem;
-            color: #C0D8E0;
+            color: #F0F4EF;
             margin-bottom: 2rem;
             opacity: 0.85;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 1px 1px 4px rgba(13, 24, 33, 0.7);
         }
 
+        /* FIXED: Updated color palette */
         .cta-button {
-            background: #484538;
-            color: #C0D8E0;
+            background: #0D1821;
+            color: #F0F4EF;
             padding: 1rem 2.5rem;
             font-size: 1.2rem;
             border: none;
@@ -123,69 +139,94 @@
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-            background: #5a5548;
+            background: #1f3a4e; /* Slightly lighter shade for hover */
         }
 
         .cta-button:active {
             transform: translateY(0);
         }
 
-        /* Game Overview */
         .overview {
             padding: 5rem 0;
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
+        /* FIXED: Updated color */
         .overview h2 {
             text-align: center;
             font-size: 2.5rem;
-            color: #484538;
+            color: #0D1821;
             margin-bottom: 3rem;
         }
 
         .overview-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             padding: 0 2rem;
         }
-
+        
         .overview-card {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(13, 24, 33, 0.05);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(13, 24, 33, 0.1);
+            position: relative;
+            overflow: hidden; /* Hide the line before animation */
+        }
+        
+        /* Underline effect setup */
+        .overview-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #0D1821;
+            transition: width 0.4s ease;
         }
 
         .overview-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-10px); /* Simple perpendicular lift */
+            box-shadow: 0 20px 40px rgba(13, 24, 33, 0.2);
         }
 
+        /* Underline effect on hover */
+        .overview-card:hover::after {
+            width: 100%;
+        }
+        
+        /* FIXED: Updated color */
         .overview-card h3 {
-            color: #484538;
+            color: #0D1821;
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
-
+        
+        /* FIXED: Updated color */
         .overview-card p {
-            color: #484538;
+            color: #0D1821;
             opacity: 0.9;
         }
         
-        /* Trailer Section */
+        
+
+        /* FIXED: Updated background color */
         .trailer {
             padding: 5rem 2rem;
-            background: rgba(72, 69, 56, 0.1);
+            background: rgba(13, 24, 33, 0.05);
             text-align: center;
         }
-
+        
+        /* FIXED: Updated color */
         .trailer h2 {
             font-size: 2.5rem;
-            color: #484538;
+            color: #0D1821;
             margin-bottom: 3rem;
         }
 
@@ -193,7 +234,6 @@
             max-width: 960px;
             margin: 0 auto;
             aspect-ratio: 16 / 9;
-            background: #333;
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -201,6 +241,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             cursor: pointer;
             color: #fff;
+            background-size: cover;
+            background-position: center;
         }
 
         .play-button-overlay {
@@ -211,42 +253,57 @@
             transition: background 0.3s ease;
         }
         
-        .trailer-video:hover .play-button-overlay {
+        .trailer a:hover .play-button-overlay {
             background: rgba(0,0,0,0.7);
         }
-
-
-        /* Gallery Section */
-        .gallery {
-            padding: 5rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
+        .trailer a {
+            text-decoration: none;
         }
 
+        .gallery {
+            padding: 5rem 0;
+            /* max-width: 1200px; */ /* Removed to allow full width */
+            margin: 0 auto;
+        }
+        
+        /* FIXED: Updated color */
         .gallery h2 {
             text-align: center;
             font-size: 2.5rem;
-            color: #484538;
+            color: #0D1821;
             margin-bottom: 3rem;
         }
 
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 0 2rem;
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 2rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            opacity: 0; /* Hide before JS positioning */
+            transition: opacity 0.5s ease; /* Fade in */
+        }
+        .gallery-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .gallery-item {
+            flex: 0 0 80%; /* Further increased size */
+            max-width: 800px; /* Further increased size */
+            aspect-ratio: 16 / 9;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             border: 3px solid rgba(255, 255, 255, 0.5);
+            scroll-snap-align: center;
+            transform: scale(0.85);
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05);
+        .gallery-item.is-center {
+           transform: scale(1.1);
         }
 
         .gallery-item img {
@@ -254,36 +311,95 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            cursor: pointer;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.15s; /* Faster animation */
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85%;
+            animation: zoomIn 0.15s; /* Faster animation */
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
         }
 
 
-        /* Development Status */
         .development {
             padding: 4rem 0;
             max-width: 1000px;
             margin: 0 auto;
         }
-
+        
+        /* FIXED: Updated color */
         .development h2 {
             text-align: center;
-            color: #484538;
+            color: #0D1821;
             margin-bottom: 2rem;
             font-size: 2.5rem;
         }
-
+        
+        /* FIXED: Updated color palette */
         .dev-content {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+            background: rgba(13, 24, 33, 0.05);
             border-radius: 15px;
             padding: 3rem;
             margin: 0 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(13, 24, 33, 0.1);
         }
-
+        
+        .dev-content p, .dev-content h3, .dev-list li, .dev-list li:before {
+            color: #0D1821;
+        }
+        
         .dev-content p {
-            color: #484538;
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
+        }
+        
+        .dev-content h3 {
+            margin-bottom: 1rem;
         }
 
         .dev-list {
@@ -292,24 +408,24 @@
         }
 
         .dev-list li {
-            color: #484538;
             padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(72, 69, 56, 0.1);
+            border-bottom: 1px solid rgba(13, 24, 33, 0.1);
             position: relative;
             padding-left: 1.5rem;
         }
 
         .dev-list li:before {
             content: "•";
-            color: #484538;
             font-size: 1.5rem;
             position: absolute;
             left: 0;
+            top: 50%;
+            transform: translateY(-50%);
         }
-
-        /* Built With */
+        
+        /* FIXED: Updated color palette */
         .built-with {
-            background: rgba(72, 69, 56, 0.05);
+            background: rgba(13, 24, 33, 0.05);
             padding: 4rem 0;
         }
 
@@ -321,7 +437,7 @@
         }
 
         .built-with h2 {
-            color: #484538;
+            color: #0D1821;
             margin-bottom: 2rem;
             font-size: 2.5rem;
         }
@@ -332,27 +448,28 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-
+        
+        /* FIXED: Updated color palette */
         .tech-item {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(13, 24, 33, 0.1);
+        }
+        
+        .tech-item h4, .tech-item p {
+            color: #0D1821;
         }
 
         .tech-item h4 {
-            color: #484538;
             margin-bottom: 0.5rem;
         }
 
         .tech-item p {
-            color: #484538;
             opacity: 0.8;
             font-size: 0.9rem;
         }
 
-        /* Author Section */
         .author {
             padding: 4rem 0;
             text-align: center;
@@ -365,52 +482,56 @@
         }
 
         .author h2 {
-            color: #484538;
+            color: #0D1821;
             margin-bottom: 2rem;
             font-size: 2.5rem;
         }
-
+        
+        /* FIXED: Updated color palette */
         .author-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
+            background: rgba(13, 24, 33, 0.05);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(13, 24, 33, 0.1);
+        }
+        
+        .author-name, .author-roles, .github-link {
+            color: #0D1821;
         }
 
         .author-name {
-            color: #484538;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             font-weight: bold;
         }
 
         .author-roles {
-            color: #484538;
             opacity: 0.9;
             margin-bottom: 1rem;
         }
 
         .github-link {
-            color: #484538;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
         }
 
         .github-link:hover {
-            color: #666;
+            color: #1f3a4e;
         }
-
-        /* Download Section */
+        
+        /* FIXED: Updated color palette */
         .download-section {
             text-align: center;
             padding: 4rem 2rem;
-            background: rgba(72, 69, 56, 0.1);
+            background: rgba(13, 24, 33, 0.05);
+        }
+
+        .download-section h2, .download-info {
+            color: #0D1821;
         }
 
         .download-section h2 {
-            color: #484538;
             font-size: 2.5rem;
             margin-bottom: 2rem;
         }
@@ -418,13 +539,13 @@
         .download-info {
             max-width: 700px;
             margin: 0 auto 2rem;
-            color: #484538;
             font-size: 1.1rem;
         }
-
+        
+        /* FIXED: Updated color palette */
         .download-button {
-            background: #484538;
-            color: #C0D8E0;
+            background: #0D1821;
+            color: #F0F4EF;
             padding: 1.2rem 3rem;
             font-size: 1.3rem;
             border: none;
@@ -437,58 +558,45 @@
         }
 
         .download-button:hover {
-            background: #5a5548;
+            background: #1f3a4e;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
-
-        /* Footer */
+        
+        /* FIXED: Updated color palette */
         .footer {
-            background: #484538;
-            color: #C0D8E0;
+            background: #0D1821;
+            color: #F0F4EF;
             text-align: center;
             padding: 2rem 0;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes glow {
-            from {
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 20px rgba(192, 216, 224, 0.3);
-            }
-            to {
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 30px rgba(192, 216, 224, 0.6);
-            }
+            from { text-shadow: 2px 2px 8px rgba(255,255,255,0.8); }
+            to { text-shadow: 2px 2px 12px rgba(255,255,255,1); }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
             .hero .tagline {
                 font-size: 1.2rem;
             }
-            
             .overview-grid,
-            .gallery-grid,
             .tech-grid {
                 grid-template-columns: 1fr;
+            }
+            .gallery-item {
+                flex-basis: 80%; /* On mobile, make items take more width */
             }
         }
     </style>
@@ -511,8 +619,8 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>The Lighthouse</h1>
-            <p class="tagline">3D Survival Adventure Game</p>
-            <p>You play as a stranded mechanic who must repair a broken lighthouse, survive mysterious threats at night, and signal for rescue — all while navigating a remote and eerie island. Developed in Unity with atmospheric survival gameplay.</p>
+            <p class="tagline">A Survival Horror Game!</p>
+            <p>You play as a mechanic who must repair a broken lighthouse, survive mysterious threats at night, and signal for rescue, all while navigating a remote and eerie island.</p>
             <a href="#download" class="cta-button">Download Game</a>
         </div>
     </section>
@@ -522,42 +630,46 @@
         <div class="overview-grid">
             <div class="overview-card">
                 <h3>Daytime Exploration</h3>
-                <p>Move around the island, collect materials, and work on restoring the lighthouse. Explore the mysterious terrain and gather resources needed for survival and repair.</p>
+                <p>Move around the island, collect materials, and work on restoring the lighthouse.</p>
             </div>
             <div class="overview-card">
                 <h3>Nighttime Survival</h3>
-                <p>Hide in shaded areas to avoid being hunted by nocturnal monsters. Use light and shadow strategically to survive the dangerous nights on the island.</p>
+                <p>Hide in shaded areas to avoid being hunted by nocturnal monsters. </p>
             </div>
             <div class="overview-card">
                 <h3>Map Navigation</h3>
-                <p>Use a hand-drawn map to explore and mark important locations. Navigate the island efficiently while tracking key points of interest.</p>
+                <p>Use a hand-drawn map to explore and mark important locations. </p>
             </div>
             <div class="overview-card">
                 <h3>Radio Communication</h3>
-                <p>Signal for help using a radio. If successful, a boat or helicopter will come to your rescue. Master the communication system to call for aid.</p>
+                <p>Signal for help using a radio. If successful, a boat or helicopter will come to your rescue.</p>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem; padding: 0 2rem;">
-            <div style="background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); border-radius: 15px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                <h3 style="color: #484538; margin-bottom: 1rem; font-size: 1.5rem;">End Goal</h3>
-                <p style="color: #484538; opacity: 0.9; font-size: 1.1rem;">Repair the lighthouse, stay alive, and escape the island.</p>
-            </div>
-        </div>
+        
     </section>
     
     <section class="trailer" id="trailer">
         <h2>Watch The Trailer</h2>
-        <div class="trailer-video" onclick="playTrailer()" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/trailer-thumb/960/540'); background-size: cover; background-position: center;">
-            <div class="play-button-overlay">▶️ Play Trailer</div>
-        </div>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+            <div class="trailer-video" style="background-image: url('https://picsum.photos/seed/trailer-thumb/960/540');">
+                <div class="play-button-overlay">▶ Play Trailer</div>
+            </div>
+        </a>
     </section>
     
     <section class="gallery" id="gallery">
         <h2>Gallery</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://picsum.photos/seed/game-shore/400/225" alt="Placeholder image of a game shoreline"></div>
-            <div class="gallery-item"><img src="https://picsum.photos/seed/game-tower/400/225" alt="Placeholder image of the lighthouse tower"></div>
-            <div class="gallery-item"><img src="https://picsum.photos/seed/game-night/400/225" alt="Placeholder image of a dark, spooky night scene"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-1.png" alt="A misty shoreline in the game"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-2.png" alt="The lighthouse tower at dusk"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-3.png" alt="A dark and spooky forest at night"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-10.png" alt="A different view of the island"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-4.png" alt="Another screenshot from the game"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-5.png" alt="A different view of the island"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-6.png" alt="A different view of the island"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-8.png" alt="A different view of the island"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-9.png" alt="A different view of the island"></div>
+            <div class="gallery-item"><img src="assets/gallery-image-7.png" alt="A different view of the island"></div>
         </div>
     </section>
 
@@ -565,7 +677,7 @@
         <h2>Development Status</h2>
         <div class="dev-content">
             <p>This project is currently in development. The core mechanics are being prototyped and refined to deliver an engaging survival experience.</p>
-            <h3 style="color: #484538; margin-bottom: 1rem;">Current Development Focus:</h3>
+            <h3>Current Development Focus:</h3>
             <ul class="dev-list">
                 <li>Lighthouse repair system</li>
                 <li>Night-time monster AI</li>
@@ -580,4 +692,148 @@
             <h2>Built With</h2>
             <div class="tech-grid">
                 <div class="tech-item">
-                    <h4>
+                    <h4>Unity Engine</h4>
+                    <p>The core framework for game logic, physics, and rendering.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Blender</h4>
+                    <p>Used for creating custom 3D models and animations.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>C#</h4>
+                    <p>The programming language used for scripting in Unity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="author" id="author">
+        <div class="author-container">
+            <h2>About the Developer</h2>
+            <div class="author-card">
+                <p class="author-name">Your Name</p>
+                <p class="author-roles">Game Designer | Developer | 3D Artist</p>
+                <a href="#" class="github-link">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section" id="download">
+        <h2>Download</h2>
+        <p class="download-info">The game is currently in development. Check back later for the first playable demo! Join the mailing list for updates.</p>
+        <a href="#" class="download-button">Download Not Available</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 The Lighthouse. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Lightbox Structure -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryGrid = document.querySelector('.gallery-grid');
+            if (!galleryGrid) return;
+
+            const originalItems = Array.from(galleryGrid.children);
+            if (originalItems.length === 0) return;
+
+            // --- Infinite Scroll Setup ---
+            originalItems.forEach(item => {
+                galleryGrid.appendChild(item.cloneNode(true));
+            });
+            originalItems.slice().reverse().forEach(item => {
+                galleryGrid.prepend(item.cloneNode(true));
+            });
+
+            const allItems = document.querySelectorAll('.gallery-item');
+
+            const updateCenterClass = () => {
+                const gridCenter = galleryGrid.getBoundingClientRect().left + galleryGrid.offsetWidth / 2;
+                let closestItem = null;
+                let minDistance = Infinity;
+
+                allItems.forEach(item => {
+                    const itemCenter = item.getBoundingClientRect().left + item.offsetWidth / 2;
+                    const distance = Math.abs(gridCenter - itemCenter);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestItem = item;
+                    }
+                });
+                
+                allItems.forEach(item => {
+                    item.classList.toggle('is-center', item === closestItem);
+                });
+            };
+
+            const setupGallery = () => {
+                const firstOriginalItem = allItems[originalItems.length];
+                if (firstOriginalItem) {
+                    const scrollLeft = firstOriginalItem.offsetLeft + firstOriginalItem.offsetWidth / 2 - galleryGrid.offsetWidth / 2;
+                    galleryGrid.scrollLeft = scrollLeft;
+                }
+                updateCenterClass();
+                galleryGrid.style.opacity = 1; // Fade in after positioning
+            };
+
+            const handleInfiniteScroll = () => {
+                const itemBlockWidth = galleryGrid.scrollWidth / 3;
+                // Using a small buffer to prevent firing too early
+                if (galleryGrid.scrollLeft < 1) { 
+                    galleryGrid.scrollLeft += itemBlockWidth;
+                } else if (galleryGrid.scrollLeft >= (itemBlockWidth * 2) - galleryGrid.clientWidth) {
+                    galleryGrid.scrollLeft -= itemBlockWidth;
+                }
+                // Update center class immediately on scroll
+                updateCenterClass();
+            };
+
+            galleryGrid.addEventListener('scroll', handleInfiniteScroll, { passive: true });
+            
+            // --- Lightbox & Click Logic ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.lightbox-close');
+
+            if (lightbox && lightboxImg && closeBtn) {
+                allItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        if (item.classList.contains('is-center')) {
+                            const imgSrc = item.querySelector('img').src;
+                            lightboxImg.src = imgSrc;
+                            lightbox.classList.add('active');
+                        } else {
+                            // If not centered, scroll it to center
+                            const scrollLeft = item.offsetLeft + item.offsetWidth / 2 - galleryGrid.offsetWidth / 2;
+                            galleryGrid.scrollTo({
+                                left: scrollLeft,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                const closeLightbox = () => {
+                    lightbox.classList.remove('active');
+                };
+
+                closeBtn.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
+            
+            setupGallery();
+        });
+    </script>
+
+</body>
+</html>
+
