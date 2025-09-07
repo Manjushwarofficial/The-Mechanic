@@ -262,11 +262,9 @@
 
         .gallery {
             padding: 5rem 0;
-            /* max-width: 1200px; */ /* Removed to allow full width */
             margin: 0 auto;
         }
         
-        /* FIXED: Updated color */
         .gallery h2 {
             text-align: center;
             font-size: 2.5rem;
@@ -290,8 +288,8 @@
         }
 
         .gallery-item {
-            flex: 0 0 80%; /* Further increased size */
-            max-width: 800px; /* Further increased size */
+            flex: 0 0 80%;
+            max-width: 800px;
             aspect-ratio: 16 / 9;
             border-radius: 10px;
             overflow: hidden;
@@ -314,7 +312,6 @@
             cursor: pointer;
         }
 
-        /* Lightbox Styles */
         .lightbox {
             display: none;
             position: fixed;
@@ -326,7 +323,7 @@
             background-color: rgba(0, 0, 0, 0.85);
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.15s; /* Faster animation */
+            animation: fadeIn 0.15s;
         }
 
         .lightbox.active {
@@ -336,7 +333,7 @@
         .lightbox-content {
             max-width: 90%;
             max-height: 85%;
-            animation: zoomIn 0.15s; /* Faster animation */
+            animation: zoomIn 0.15s;
         }
 
         .lightbox-close {
@@ -365,65 +362,117 @@
             to { transform: scale(1); }
         }
 
-
-        .development {
+        /* --- UPDATED --- Split Section for Dev and Author */
+        .info-section {
+            display: flex;
+            min-height: 60vh;
+            background-color: #F0F4EF;
+            overflow: hidden;
             padding: 4rem 0;
-            max-width: 1000px;
-            margin: 0 auto;
         }
-        
-        /* FIXED: Updated color */
-        .development h2 {
-            text-align: center;
-            color: #0D1821;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
+
+        .dev-panel {
+            flex-basis: 50%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 2rem 5% 2rem 2rem;
         }
-        
-        /* FIXED: Updated color palette */
+
         .dev-content {
-            background: rgba(13, 24, 33, 0.05);
-            border-radius: 15px;
-            padding: 3rem;
-            margin: 0 2rem;
-            border: 1px solid rgba(13, 24, 33, 0.1);
+            max-width: 500px;
+            width: 100%;
         }
-        
-        .dev-content p, .dev-content h3, .dev-list li, .dev-list li:before {
+
+        .author-panel {
+    flex-basis: 50%;
+    background-color: #0D1821;
+    color: #F0F4EF;
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+    margin-left: 0;
+    margin-right: -5%;
+    padding-left: 20%;
+    padding-right: 15%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    /* Change the origin to the right edge */
+    transform-origin: right;
+}
+
+.author-panel:hover {
+    /* Use scale() to scale proportionally instead of just horizontally */
+    transform: scale(1.05); /* Adjust the value as you like */
+    box-shadow: -10px 0px 30px rgba(13, 24, 33, 0.3);
+    }
+
+        .author-content {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dev-content, .author-content {
+             text-align: left;
+        }
+
+        .dev-content p, .dev-content h3, .dev-list li {
             color: #0D1821;
         }
-        
         .dev-content p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        
         .dev-content h3 {
             margin-bottom: 1rem;
         }
-
         .dev-list {
             list-style: none;
             padding-left: 0;
         }
-
         .dev-list li {
             padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(13, 24, 33, 0.1);
             position: relative;
             padding-left: 1.5rem;
         }
-
         .dev-list li:before {
             content: "•";
+            color: #0D1821;
             font-size: 1.5rem;
             position: absolute;
             left: 0;
             top: 50%;
             transform: translateY(-50%);
         }
-        
-        /* FIXED: Updated color palette */
+
+        .author-content .author-name, .author-content .author-roles, .author-content .github-link {
+            color: #F0F4EF;
+        }
+        .author-content .github-link:hover {
+            color: #fff;
+        }
+        .author-content .author-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .author-content .author-roles {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        .author-content .github-link {
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
         .built-with {
             background: rgba(13, 24, 33, 0.05);
             padding: 4rem 0;
@@ -448,15 +497,14 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
-        /* FIXED: Updated color palette */
+
         .tech-item {
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             padding: 1.5rem;
             border: 1px solid rgba(13, 24, 33, 0.1);
         }
-        
+
         .tech-item h4, .tech-item p {
             color: #0D1821;
         }
@@ -470,57 +518,6 @@
             font-size: 0.9rem;
         }
 
-        .author {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .author-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .author h2 {
-            color: #0D1821;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-        }
-        
-        /* FIXED: Updated color palette */
-        .author-card {
-            background: rgba(13, 24, 33, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(13, 24, 33, 0.1);
-        }
-        
-        .author-name, .author-roles, .github-link {
-            color: #0D1821;
-        }
-
-        .author-name {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        .author-roles {
-            opacity: 0.9;
-            margin-bottom: 1rem;
-        }
-
-        .github-link {
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .github-link:hover {
-            color: #1f3a4e;
-        }
-        
-        /* FIXED: Updated color palette */
         .download-section {
             text-align: center;
             padding: 4rem 2rem;
@@ -541,8 +538,7 @@
             margin: 0 auto 2rem;
             font-size: 1.1rem;
         }
-        
-        /* FIXED: Updated color palette */
+
         .download-button {
             background: #0D1821;
             color: #F0F4EF;
@@ -562,8 +558,7 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
-        
-        /* FIXED: Updated color palette */
+
         .footer {
             background: #0D1821;
             color: #F0F4EF;
@@ -581,6 +576,34 @@
             to { text-shadow: 2px 2px 12px rgba(255,255,255,1); }
         }
 
+        @media (max-width: 992px) {
+            .info-section {
+                flex-direction: column;
+                min-height: auto;
+                padding: 0;
+            }
+            .dev-panel {
+                justify-content: center;
+                text-align: center;
+                padding: 4rem 2rem;
+            }
+             .dev-content, .author-content {
+                text-align: left;
+            }
+            .author-panel {
+                margin-left: 0;
+                border-radius: 0;
+                padding: 4rem 2rem;
+                justify-content: center;
+                text-align: left;
+            }
+            .author-panel:hover {
+                transform: translateY(-10px);
+                box-shadow: 0px -10px 30px rgba(13, 24, 33, 0.2);
+            }
+        }
+
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -596,7 +619,7 @@
                 grid-template-columns: 1fr;
             }
             .gallery-item {
-                flex-basis: 80%; /* On mobile, make items take more width */
+                flex-basis: 80%;
             }
         }
     </style>
@@ -610,7 +633,7 @@
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#trailer">Trailer</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#development">Development</a></li>
+                <li><a href="#info">About</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
         </div>
@@ -673,20 +696,30 @@
         </div>
     </section>
 
-    <section class="development" id="development">
-        <h2>Development Status</h2>
-        <div class="dev-content">
-            <p>This project is currently in development. The core mechanics are being prototyped and refined to deliver an engaging survival experience.</p>
-            <h3>Current Development Focus:</h3>
-            <ul class="dev-list">
-                <li>Lighthouse repair system</li>
-                <li>Night-time monster AI</li>
-                <li>Radio-based rescue system</li>
-                <li>Map-based exploration and interaction</li>
-            </ul>
+    <section class="info-section" id="info">
+        <div class="dev-panel">
+            <div class="dev-content">
+                <h2>Development Status</h2>
+                <p>This project is currently in development. The core mechanics are being prototyped and refined to deliver an engaging survival experience.</p>
+                <h3>Current Development Focus:</h3>
+                <ul class="dev-list">
+                    <li>Lighthouse repair system</li>
+                    <li>Night-time monster AI</li>
+                    <li>Radio-based rescue system</li>
+                    <li>Map-based exploration and interaction</li>
+                </ul>
+            </div>
+        </div>
+        <div class="author-panel">
+            <div class="author-content">
+                <h2>About the Developer</h2>
+                <p class="author-name">Manjushwar Khairkar</p>
+                <p class="author-roles">Game Designer | Developer | 3D Artist</p>
+                <a href="#" class="github-link">View on GitHub</a>
+            </div>
         </div>
     </section>
-
+    
     <section class="built-with">
         <div class="built-container">
             <h2>Built With</h2>
@@ -707,17 +740,6 @@
         </div>
     </section>
 
-    <section class="author" id="author">
-        <div class="author-container">
-            <h2>About the Developer</h2>
-            <div class="author-card">
-                <p class="author-name">Your Name</p>
-                <p class="author-roles">Game Designer | Developer | 3D Artist</p>
-                <a href="#" class="github-link">View on GitHub</a>
-            </div>
-        </div>
-    </section>
-
     <section class="download-section" id="download">
         <h2>Download</h2>
         <p class="download-info">The game is currently in development. Check back later for the first playable demo! Join the mailing list for updates.</p>
@@ -728,7 +750,6 @@
         <p>&copy; 2025 The Lighthouse. All Rights Reserved.</p>
     </footer>
 
-    <!-- Lightbox Structure -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
@@ -742,7 +763,6 @@
             const originalItems = Array.from(galleryGrid.children);
             if (originalItems.length === 0) return;
 
-            // --- Infinite Scroll Setup ---
             originalItems.forEach(item => {
                 galleryGrid.appendChild(item.cloneNode(true));
             });
@@ -778,24 +798,21 @@
                     galleryGrid.scrollLeft = scrollLeft;
                 }
                 updateCenterClass();
-                galleryGrid.style.opacity = 1; // Fade in after positioning
+                galleryGrid.style.opacity = 1;
             };
 
             const handleInfiniteScroll = () => {
                 const itemBlockWidth = galleryGrid.scrollWidth / 3;
-                // Using a small buffer to prevent firing too early
                 if (galleryGrid.scrollLeft < 1) { 
                     galleryGrid.scrollLeft += itemBlockWidth;
                 } else if (galleryGrid.scrollLeft >= (itemBlockWidth * 2) - galleryGrid.clientWidth) {
                     galleryGrid.scrollLeft -= itemBlockWidth;
                 }
-                // Update center class immediately on scroll
                 updateCenterClass();
             };
 
             galleryGrid.addEventListener('scroll', handleInfiniteScroll, { passive: true });
             
-            // --- Lightbox & Click Logic ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeBtn = document.querySelector('.lightbox-close');
@@ -808,7 +825,6 @@
                             lightboxImg.src = imgSrc;
                             lightbox.classList.add('active');
                         } else {
-                            // If not centered, scroll it to center
                             const scrollLeft = item.offsetLeft + item.offsetWidth / 2 - galleryGrid.offsetWidth / 2;
                             galleryGrid.scrollTo({
                                 left: scrollLeft,
@@ -828,7 +844,7 @@
                         closeLightbox();
                     }
                 });
-            }
+            } 
             
             setupGallery();
         });
@@ -836,4 +852,3 @@
 
 </body>
 </html>
-
