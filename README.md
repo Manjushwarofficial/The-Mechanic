@@ -5,7 +5,7 @@ You play as a stranded mechanic who must repair a broken lighthouse, survive mys
 
 ## Landing Page
 
-[Website Link](https://htmledit.squarefree.com)
+[Official Website](https://manjushwarofficial.github.io/The-Lighthouse/)
 
 # Gameplay Screenshots
 
