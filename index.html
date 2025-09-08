@@ -180,39 +180,58 @@
         
         /* Underline effect setup */
         .overview-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: #0D1821;
-            transition: width 0.4s ease;
-        }
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: #0D1821;
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
 
-        .overview-card:hover {
-            transform: translateY(-10px); /* Simple perpendicular lift */
-            box-shadow: 0 20px 40px rgba(13, 24, 33, 0.2);
-        }
+.overview-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+}
 
-        /* Underline effect on hover */
-        .overview-card:hover::after {
-            width: 100%;
-        }
-        
-        /* FIXED: Updated color */
-        .overview-card h3 {
-            color: #0D1821;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        /* FIXED: Updated color */
-        .overview-card p {
-            color: #0D1821;
-            opacity: 0.9;
-        }
+.overview-card:hover {
+  transform: translateY(-10px); /* Simple perpendicular lift */
+  box-shadow: 0 20px 40px rgba(13, 24, 33, 0.2);
+  background-color: #0D1821; /* Dark background on hover */
+}
+
+/* Underline effect on hover - changes to light color */
+.overview-card:hover::after {
+  width: 100%;
+  background: #ffffff; /* Light underline on dark background */
+}
+
+/* FIXED: Updated color */
+.overview-card h3 {
+  color: #0D1821;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  transition: color 0.4s ease;
+}
+
+/* Light text on hover */
+.overview-card:hover h3 {
+  color: #ffffff;
+}
+
+/* FIXED: Updated color */
+.overview-card p {
+  color: #0D1821;
+  opacity: 0.9;
+  transition: color 0.4s ease, opacity 0.4s ease;
+}
+
+/* Light text on hover */
+.overview-card:hover p {
+  color: #ffffff;
+  opacity: 1;
+}
         
         
 
